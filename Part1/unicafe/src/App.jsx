@@ -1,99 +1,76 @@
 import { useState } from "react";
 
-const App = () => {
-  const [good, setGood] = useState(0);
-  const [natural, setNatural] = useState(0);
-  const [bad, setBad] = useState(0);
-  //Every click is stored in a separate piece of state
-   //called allClicks that is initialized as an empty array:
-
-  // const [allClicks, setAll] = useState([]);
-  const [total, setTotal] = useState(0)
-  const [totalOne, setTotalOne] = useState(0);
-  const [totalTwo, setTotalTwo] = useState(0);
-  const [feedbackGiven, setFeedbackGiven] = useState(false);
-  
-  
-  
-  const handleGoodClick = () => {
-    const updatedGood = good + 1;
-    setGood(updatedGood);
-    setTotal(updatedGood);
-    setFeedbackGiven(true);
-  };
-
-  const handleNaturalClick = () => {
-    const updatedNatural = natural + 1;
-    setNatural(updatedNatural);
-    setTotalOne(updatedNatural);
-    setFeedbackGiven(true);
-  };
-
-  const handleBadClick = () => {
-    const updatedBad = bad + 1;
-    setBad(updatedBad);
-    setTotalTwo(updatedBad);
-    setFeedbackGiven(true);
-  };
-
-  const totalFeedbacks = good + natural + bad;
-  const averageScore = (good - bad) / totalFeedbacks || 0;
-  const positivePercentage = (good / totalFeedbacks) * 100 || 0;
-
-  // if (!good || !natural || !bad) {
-  //  return <p>No feedback given</p>
-  // }
-
+const StatisticLine = (props) => {
   return (
-    //When the left button is clicked, we add the letter L to the allClicks array:
-    <div>
-      <h1>give feedback</h1>
-      <button onClick={handleGoodClick}>good</button>
-      <button onClick={handleNaturalClick}>natural</button>
-      <button onClick={handleBadClick}>bad</button>
-
-      {/* <p>{allClicks.join(" ")}</p> */}
-      <h2>statistic</h2>
-      {feedbackGiven ? (
-        <div>
-          <table>
-            <tbody>
-              <tr>
-                <td>good:</td>
-                <td>{total}</td>
-              </tr>
-              <tr>
-                <td>natural:</td>
-                <td>{totalOne}</td>
-              </tr>
-              <tr>
-                <td>bad:</td>
-                <td>{totalTwo}</td>
-              </tr>
-              <tr>
-                <td>all:</td>
-                <td>{totalFeedbacks}</td>
-              </tr>
-              <tr>
-                <td>average:</td>
-                <td>{averageScore.toFixed(2)}</td>
-              </tr>
-              <tr>
-                <td>positive:</td>
-                <td>{positivePercentage.toFixed(2)}%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <p>No feedback given</p>
-      )}
-      {/* { (!good || !natural || !bad) ? <p>No feedback given</p> : null
-} */}
-    </div>
+    <tr>
+      <td>{props.text}</td>
+      <td>{props.value}</td>
+    </tr>
   );
 };
 
+const Statistics = (props) => {
+  if(!(props.good || props.netural || props.bad)) {
+    return <p>No feedback given</p>
+  }
+    return (
+      <table>
+        {/* <p>good {props.good}</p>
+        <p>netural {props.netural}</p>
+        <p>bad {props.bad}</p>
+        <p>all {props.good + props.netural + props.bad}</p>
+        <p>average:{(props.good - props.bad) / (props.good + props.netural + props.bad) || 0}</p>
+        <p>positive:{(props.good * 100) / (props.good + props.netural + props.bad) || 0} %</p> */}
+        <StatisticLine text="good" value={props.good} />
+        <StatisticLine text="netural" value={props.netural} />
+        <StatisticLine text="bad" value={props.bad} />
+        <StatisticLine
+          text="average"
+          value={
+            (props.good - props.bad) /
+              (props.good + props.netural + props.bad) || 0
+          }
+        />
+        <StatisticLine
+          text="postive"
+          value={
+            (props.good * 100) /
+              (props.good + props.netural + props.bad) + " %" || 0
+          }
+        />
+      </table>
+    );
+}
+
+const Button = (props) => {
+  return (
+    <button onClick={props.handleClick}>{props.text}</button>
+  )
+}
+
+
+
+const App = () => {
+  const [good, setGood] = useState(0)
+  const [netural, setNetural] = useState(0);
+  const [bad, setBad] = useState(0);
+  
+
+  const handleGoodClick = () => setGood(good + 1);
+  const handleNeturalClick = () => setNetural(netural + 1);
+  const handleBadClick = () => setBad(bad + 1);
+  return (
+    <div>
+      <h1>Give feedback</h1>
+      <Button handleClick={handleGoodClick} text="Good" />
+      <Button handleClick={handleNeturalClick} text="Netural" />
+      <Button handleClick={handleBadClick} text="Bad" />
+      <h2>Statistics</h2>
+      <Statistics good={good} netural={netural} bad={bad} />
+    </div>
+  );
+}
+ 
 export default App;
 
 
