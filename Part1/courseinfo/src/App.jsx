@@ -44,11 +44,34 @@ const TotalPage = () => {
 };
  
 const App = () => {
+  const course = {
+    name: "Half Stack application development",
+    parts: [
+      {
+        name: "Fundamentals of React",
+        exercises: 10,
+      },
+      {
+        name: "Using props to pass data",
+        exercises: 7,
+      },
+      {
+        name: "State of a component",
+        exercises: 14,
+      },
+    ],
+  };
+
   return (
     <div>
-      <HeaderPage />
-      <ContentPage />
-      <TotalPage />
+      <h1>{course.name}</h1>
+      {course.parts.map((part) => {
+        const fullItem = part.name + ' ' + part.exercises
+
+        return (
+          <p>{fullItem}</p>
+        )
+      })}
     </div>
   );
 };
