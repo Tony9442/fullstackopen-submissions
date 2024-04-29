@@ -53,10 +53,9 @@ const App = () => {
       <button onClick={handleBadClick}>bad</button>
 
       {/* <p>{allClicks.join(" ")}</p> */}
-
+      <h2>statistic</h2>
       {feedbackGiven ? (
         <div>
-          <h2>statistic</h2>
           <table>
             <tbody>
               <tr>
