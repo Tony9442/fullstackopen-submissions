@@ -1,0 +1,64 @@
+{
+  "persons": [
+    {
+      "name": "Arto Hellas",
+      "phoneNumber": "045-654321",
+      "id": "1"
+    },
+    {
+      "name": "Ada Lovelace",
+      "phoneNumber": "39-44-5323523",
+      "id": "2"
+    },
+    {
+      "name": "Dan Abramov",
+      "phoneNumber": "12-43-234345",
+      "id": "3"
+    },
+    {
+      "name": "Mary Poppendieck",
+      "phoneNumber": "39-23-6423122",
+      "id": "4"
+    },
+    {
+      "name": "Martin Fowler",
+      "phoneNumber": "0543222338",
+      "id": "5b9b"
+    },
+    {
+      "id": "e0cb",
+      "name": "Anthony Nwanosike",
+      "phoneNumber": "0543111228"
+    },
+    {
+      "name": "Chuwka Tony",
+      "phoneNumber": "0533331333",
+      "id": "a05e"
+    },
+    {
+      "id": "6e7a",
+      "name": "Cat Willams",
+      "phoneNumber": "056567558"
+    },
+    {
+      "name": "Cow Goat",
+      "phoneNumber": "0543111228",
+      "id": "22c0"
+    },
+    {
+      "id": "99fb",
+      "name": "Cow Milk",
+      "phoneNumber": "054555666"
+    },
+    {
+      "id": "f8b6",
+      "name": "Sun Day",
+      "phoneNumber": "080122234"
+    },
+    {
+      "id": "79c6",
+      "name": "Ben White",
+      "phoneNumber": "090556678"
+    }
+  ]
+}
